@@ -36,3 +36,5 @@
     transform: rotate(360deg);
   }
 }
+
+body { @apply bg-background text-neutral-muted; }
