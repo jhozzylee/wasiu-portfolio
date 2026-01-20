@@ -1,6 +1,9 @@
+"use client";
+
 import React, { useState } from "react";
 import CTAButton from "./CTAButton";
 import GetStarted from "./LetsChart";
+import { urlFor } from "../lib/sanity"; // ✅ Make sure you import urlFor
 
 const PortfolioModal = ({ project, onClose, setProject, allProjects }) => {
   const [showModal, setShowModal] = useState(false);
@@ -8,9 +11,9 @@ const PortfolioModal = ({ project, onClose, setProject, allProjects }) => {
   if (!project) return null;
 
   const relatedProjects =
-    project.relatedProjects?.length > 0
+    project.related?.length > 0
       ? allProjects.filter((p) =>
-          project.relatedProjects.some((r) => r._ref === p._id)
+          project.related.some((r) => r._ref === p._id)
         )
       : [];
 
@@ -28,31 +31,39 @@ const PortfolioModal = ({ project, onClose, setProject, allProjects }) => {
 
         {/* Mobile media */}
         <div className="md:hidden pt-16">
-          <img
-            src={project.mainImage}
-            alt={project.title}
-            className="w-full object-cover"
-          />
+          {project.mainImage && (
+            <img
+              src={urlFor(project.mainImage).width(1200).url()}
+              alt={project.title}
+              className="w-full object-cover rounded-lg"
+            />
+          )}
         </div>
 
         {/* Left content */}
         <div className="px-6 py-12 space-y-8">
           <div>
             <h2 className="text-2xl font-bold">{project.title}</h2>
-            <p className="text-neutral-400">{project.category}</p>
+            {project.category && (
+              <p className="text-neutral-400">{project.category}</p>
+            )}
           </div>
 
           {/* Problem */}
-          <div>
-            <h3 className="font-semibold mb-2">Problem</h3>
-            <p className="text-neutral-300">{project.problem}</p>
-          </div>
+          {project.problem && (
+            <div>
+              <h3 className="font-semibold mb-2">Problem</h3>
+              <p className="text-neutral-300">{project.problem}</p>
+            </div>
+          )}
 
           {/* Solution */}
-          <div>
-            <h3 className="font-semibold mb-2">Solution</h3>
-            <p className="text-neutral-300">{project.solution}</p>
-          </div>
+          {project.solution && (
+            <div>
+              <h3 className="font-semibold mb-2">Solution</h3>
+              <p className="text-neutral-300">{project.solution}</p>
+            </div>
+          )}
 
           {/* Outcome */}
           {project.outcomes?.length > 0 && (
@@ -81,11 +92,13 @@ const PortfolioModal = ({ project, onClose, setProject, allProjects }) => {
 
         {/* Desktop media + related */}
         <div className="hidden md:block p-10 space-y-6">
-          <img
-            src={project.mainImage}
-            alt={project.title}
-            className="w-full rounded-lg"
-          />
+          {project.mainImage && (
+            <img
+              src={urlFor(project.mainImage).width(1200).url()}
+              alt={project.title}
+              className="w-full rounded-lg"
+            />
+          )}
 
           {relatedProjects.length > 0 && (
             <div>
@@ -97,11 +110,13 @@ const PortfolioModal = ({ project, onClose, setProject, allProjects }) => {
                     onClick={() => setProject(item)}
                     className="cursor-pointer"
                   >
-                    <img
-                      src={item.thumbnail}
-                      alt={item.title}
-                      className="rounded-md"
-                    />
+                    {item.thumbnail && (
+                      <img
+                        src={urlFor(item.thumbnail).width(600).url()}
+                        alt={item.title}
+                        className="rounded-md"
+                      />
+                    )}
                     <p className="text-sm mt-1">{item.title}</p>
                   </div>
                 ))}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://yourdomain.com/</loc></url>
+  <url><loc>https://yourdomain.com/about</loc></url>
+  <url><loc>https://yourdomain.com/services</loc></url>
+  <url><loc>https://yourdomain.com/portfolio</loc></url>
+  <url><loc>https://yourdomain.com/blog</loc></url>
+  
+  <url><loc>https://yourdomain.com/services/scheduling</loc></url>
+  <url><loc>https://yourdomain.com/services/admin</loc></url>
+  <url><loc>https://yourdomain.com/services/hr-strategy</loc></url>
+  <url><loc>https://yourdomain.com/services/talent</loc></url>
+  <url><loc>https://yourdomain.com/services/relations</loc></url>
+  <url><loc>https://yourdomain.com/services/productivity</loc></url>
+</urlset>

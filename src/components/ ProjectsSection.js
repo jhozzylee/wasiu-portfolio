@@ -3,22 +3,24 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import CTAButton from "./CTAButton";
-import { client } from "../lib/sanity"; // Make sure this points to your sanity.js
+import { client, urlFor } from "../lib/sanity";
 
 export default function ProjectsSection() {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    // Fetch 3 featured projects from Sanity
     const fetchProjects = async () => {
       try {
         const data = await client.fetch(`
-          *[_type == "portfolio" && featured == true] | order(_createdAt desc)[0..2]{
+          *[_type == "portfolio"] 
+          | order(_createdAt desc)[0..2]{
+            _id,
             title,
             description,
-            "image": image.asset->url
+            thumbnail
           }
         `);
+
         setProjects(data);
       } catch (err) {
         console.error("Error fetching projects:", err);
@@ -44,22 +46,28 @@ export default function ProjectsSection() {
 
         {/* Projects Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[32px] justify-items-center">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <div
-              key={index}
+              key={project._id}
               className="w-full max-w-[352px] bg-surface-muted border border-surface-dim rounded-2xl overflow-hidden"
             >
               {/* Image */}
-              <img
-                src={project.image}
-                alt={project.title}
-                className="w-full h-[220px] object-cover"
-              />
+              {project.thumbnail && (
+                <img
+                  src={urlFor(project.thumbnail).width(600).height(400).url()}
+                  alt={project.title}
+                  className="w-full h-[220px] object-cover"
+                />
+              )}
 
               {/* Content */}
               <div className="p-6 space-y-3">
-                <h3 className="text-h3 font-satoshi">{project.title}</h3>
-                <p className="text-bodySm text-neutral-muted">{project.description}</p>
+                <h3 className="text-h3 font-satoshi">
+                  {project.title}
+                </h3>
+                <p className="text-bodySm text-neutral-muted">
+                  {project.description}
+                </p>
               </div>
             </div>
           ))}
@@ -67,9 +75,9 @@ export default function ProjectsSection() {
 
         {/* CTA */}
         <div className="mt-14 flex justify-center">
-        <Link to="/portfolio">
-          <CTAButton text="View All Projects" />
-        </Link>
+          <Link to="/portfolio">
+            <CTAButton text="View All Projects" />
+          </Link>
         </div>
       </div>
     </section>

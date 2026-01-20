@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import SEO from "../components/SEO"; // Import the SEO component
 import Header from "../components/Header";
 import Hero from "../components/Hero";
 import About from "../components/About";
@@ -17,6 +18,12 @@ export default function Home() {
 
   return (
     <>
+      {/* GLOBAL SEO FOR HOME PAGE */}
+      <SEO 
+        title="Executive Virtual Assistant & HR Strategist"
+        description="Helping Businesses Thrive Through People & Process Excellence. Wasiu Ayoola provides strategic EA & HR solutions, optimizing processes for visionary leaders."
+      />
+
       <Header />
       <Hero onOpenBookCall={handleOpenBookCall} />
       <About />

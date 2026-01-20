@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 
 import CTAButton from "./CTAButton";
-import bgImage from "../assets/images/Ayoola_Hero.png";
+import bgImage from "../assets/images/Hero.webp";
 
 import client1 from "../assets/images/Nupat.png";
 import client2 from "../assets/images/Automatedpro.png";
