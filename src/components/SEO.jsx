@@ -5,9 +5,14 @@ export default function SEO({ title, description, image, url }) {
   const siteTitle = "Wasiu Ayoola";
   const fullTitle = title ? `${title} | ${siteTitle}` : siteTitle;
   const defaultDescription = "Helping Businesses Thrive Through People & Process Excellence. Strategic EA & HR solutions.";
-  // Replace with your actual hosted image URL
-  const siteUrl = window.location.origin; 
-  const defaultImage = `${siteUrl}/wasiu-ayoola-executive-assistant.jpg`;
+  
+  // FIX: Hard-code your actual live domain here. 
+  // Use your Vercel URL (e.g., https://wasiu-portfolio.vercel.app) 
+  // or your custom domain if you have one linked.
+  const productionUrl = "https://wasiu-portfolio-five.vercel.app"; 
+
+  const defaultImage = `${productionUrl}/wasiu-ayoola-executive-assistant.jpg`;
+  const currentUrl = url || (typeof window !== 'undefined' ? window.location.href : productionUrl);
 
   return (
     <Helmet>
@@ -20,7 +25,7 @@ export default function SEO({ title, description, image, url }) {
       <meta property="og:title" content={fullTitle} />
       <meta property="og:description" content={description || defaultDescription} />
       <meta property="og:image" content={image || defaultImage} />
-      <meta property="og:url" content={url || window.location.href} />
+      <meta property="og:url" content={currentUrl} />
 
       {/* Twitter */}
       <meta name="twitter:card" content="summary_large_image" />
