@@ -81,7 +81,7 @@ export default function ExpertiseSection() {
   ];
 
   return (
-    <section className="bg-background text-neutral-default py-20 font-generalsans pt-36">
+    <section className="bg-background text-neutral-default font-generalsans pt-16">
       <div className="max-w-[1120px] mx-auto px-4 sm:px-6">
         <div className="text-center max-w-2xl mx-auto mb-14">
           <h2 className="text-h2 font-satoshi mb-4">What I Can Do for You</h2>

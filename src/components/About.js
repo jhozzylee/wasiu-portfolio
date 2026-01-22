@@ -23,7 +23,7 @@ export default function AboutSection() {
       <div className="max-w-[1120px] mx-auto flex flex-col lg:flex-row gap-12 items-center px-4 sm:px-6">
         
         {/* LEFT / IMAGE */}
-        <div className="w-full lg:w-[480px] order-2 lg:order-1">
+        <div className="w-full lg:w-[480px] hidden lg:block">
           <img
             src={aboutImage}
             alt="About Wasiu"
@@ -43,7 +43,7 @@ export default function AboutSection() {
               </p>
             </div>
 
-            <h2 className="text-h2 font-satoshi text-center lg:text-left">
+            <h2 className="text-h2 font-satoshi">
               Who is{" "}
               <span className="text-brand-primary">Wasiu Ayoola?</span>
             </h2>

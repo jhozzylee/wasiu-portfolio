@@ -18,10 +18,12 @@ export default function Home() {
 
   return (
     <>
-      {/* GLOBAL SEO FOR HOME PAGE */}
+      {/* SEO */}
       <SEO 
-        title="Executive Virtual Assistant & HR Strategist"
-        description="Helping Businesses Thrive Through People & Process Excellence. Wasiu Ayoola provides strategic EA & HR solutions, optimizing processes for visionary leaders."
+        title="Executive Virtual Assistant | Wasiu Ayoola"
+        description="Strategic Executive Assistant & HR solutions helping visionary leaders optimize processes and thrive."
+        keywords="Executive Assistant, Virtual Assistant, EA, HR Strategist, Business Optimization"
+        image="https://wasiu-portfolio-five.vercel.app/wwasiu-ayoola-executive-assistant.jpg"
       />
 
       <Header />

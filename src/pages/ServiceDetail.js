@@ -23,10 +23,13 @@ export default function ServiceDetail() {
   return (
     <>
       {/* Wired: Dynamic SEO tags based on the current service */}
-      <SEO 
-        title={data.title} 
-        description={data.intro.substring(0, 160)} 
-      />
+      <SEO
+  title={`${data.title} | Wasiu Ayoola`}
+  description={`${data.intro.substring(0, 160)} Learn how Wasiu Ayoola can optimize your operations and HR processes.`}
+  keywords={data.keywords?.join(", ")}
+  image={data.ogImage || "https://wasiu-portfolio-five.vercel.app/wasiu-ayoola-executive-assistant.jpg"}
+  url={`https://wasiu-portfolio-five.vercel.app/services/${serviceId}`}
+/>
 
       <Header />
       

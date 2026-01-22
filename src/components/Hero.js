@@ -38,7 +38,7 @@ const HeroButtons = ({ onOpenBookCall }) => (
 
 const Hero = ({ onOpenBookCall }) => {
   return (
-    <section className="bg-background text-neutral-default pt-36">
+    <section className="bg-background text-neutral-default pt-16 sm:pt-24 md:pt-36">
       <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-4 xl:px-0 flex flex-col lg:flex-row items-center justify-between">
         
         {/* Left / Text */}

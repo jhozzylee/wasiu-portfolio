@@ -1,8 +1,8 @@
 import React from "react";
-import SEO from "../components/SEO"; // Import your SEO helper
+import SEO from "../components/SEO";
 import Header from "../components/Header";
 import ServiceSection from "../components/ServicesSection";
-import ExperctSection from "../components/ExpertSection";
+import ExpertSection from "../components/ExpertSection";
 import WorkProcess from "../components/Process";
 import TestimonialSection from "../components/Testemonial";
 import ContactForm from "../components/ContactForm";
@@ -11,19 +11,27 @@ import Footer from "../components/Footer";
 export default function Services() {
   return (
     <>
-      {/* Services Hub SEO: Focus on operational excellence and fractional support */}
+      {/* SEO for Services Hub */}
       <SEO 
-        title="Services & Operational Excellence" 
-        description="Explore strategic EA & HR solutions, from Talent Acquisition to Customer Operations. Wasiu Ayoola helps businesses scale through people and process excellence."
+        title="Services | Executive Virtual Assistant & HR Solutions"
+        description="Discover Wasiu Ayoola's strategic EA & HR services, helping businesses scale through people and process excellence. From Talent Acquisition to Customer Operations."
+        keywords="Executive Assistant, HR Solutions, Operational Excellence, Talent Acquisition, Customer Operations"
+        image="https://wasiu-portfolio-five.vercel.app/wasiu-ayoola-executive-assistant.jpg"
       />
       
       <div>
         <Header />
-        <ServiceSection />
-        <ExperctSection />
-        <WorkProcess />
-        <TestimonialSection />
-        <ContactForm />
+
+        <main>
+          <h1 className="text-h1">Our Services</h1>
+
+          <ServiceSection />
+          <ExpertSection />
+          <WorkProcess />
+          <TestimonialSection />
+          <ContactForm />
+        </main>
+
         <Footer />
       </div>
     </>

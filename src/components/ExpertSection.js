@@ -17,7 +17,7 @@ const ExperctSection = ({ onOpenBookCall }) => {
         "I balance business goals with human needs, so teams stay motivated, happy, and productive.",
     },
     {
-      title: "CAdaptable & Reliable",
+      title: "Adaptable & Reliable",
       description:
         "Whether it’s strategy or last-minute changes, I stay calm, organized, and focused under pressure.",
     },
@@ -31,7 +31,7 @@ const ExperctSection = ({ onOpenBookCall }) => {
   return (
     <div className="bg-background text-dark">
       {/* Expertise Section */}
-      <section className="bg-background text-neutral-default py-20 font-generalsans py-10 max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-4 xl:px-0 lg:px-0">
+      <section className="bg-background text-neutral-default pt-20 font-generalsans py-10 max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-4 xl:px-0 lg:px-0">
         <div className="text-center mb-12">
           <h2 className="text-h2 font-satoshi">Why Work With Me</h2>
           <p className="text-body max-w-[568px] mx-auto">
@@ -58,7 +58,7 @@ const ExperctSection = ({ onOpenBookCall }) => {
 
 
       {/* CTA Section */}
-      <section className="py-2 text-center flex flex-col gap-6 px-4 sm:px-6 lg:px-0 bg-surface">
+      <section className="pb-20 text-center flex flex-col gap-6 px-4 sm:px-6 lg:px-0 bg-surface">
         <div className="flex justify-center">
           <CTAButton
             text="Book a Call"

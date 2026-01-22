@@ -2,11 +2,11 @@ import React, { memo } from "react";
 import bgImage from "../assets/images/About-hero.png";
 
 const About = () => (
-  <section className="bg-background text-neutral-default font-generalsans pt-24 sm:pt-28 lg:pt-36">
+  <section className="bg-background text-neutral-default font-generalsans pt-16 sm:pt-24 md:pt-36">
     <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-4 xl:px-0 flex flex-col lg:flex-row items-center justify-between">
       
       {/* Left Section */}
-      <div className="lg:w-1/2 text-center lg:text-left max-w-[544px]">
+      <div className="lg:w-1/2 text-justify lg:text-left max-w-[544px]">
         <h2 className="font-satoshi text-h2 sm:text-h2 lg:text-h2 leading-tight mb-6">
         MEET WASIU{" "}
           <span className="text-brand-primary">AYOOLA</span>
@@ -18,7 +18,7 @@ const About = () => (
             src={bgImage}
             alt="Professional IT consultants delivering secure technology solutions"
             loading="lazy"
-            className="w-full max-w-[320px] sm:max-w-[400px] h-auto"
+            className="w-full max-w-[400px] h-auto"
           />
         </div>
 
@@ -31,7 +31,7 @@ const About = () => (
         systems that inspire trust, boost productivity, and keep teams engaged.
          </p>
 
-         <h2 className="font-satoshi text-h2 sm:text-h2 lg:text-h2 leading-tight mb-6">
+         <h2 className="font-satoshi text-h2 text-left leading-tight mb-6">
          From Admin Assistant to {" "}
           <span className="text-brand-primary">Trusted Executive Partner.</span>
         </h2>

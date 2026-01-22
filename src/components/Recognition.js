@@ -42,11 +42,11 @@ const Recognition = () => {
   </div>
 
   {/* Right Column: Recognition & Impact */}
-  <div className="flex flex-col gap-4 order-1 lg:order-2 text-center lg:text-left">
+  <div className="flex flex-col gap-4 order-1 lg:order-2 text-left">
     <h2 className="text-h2 font-satoshi">
       Recognition & <span className="text-brand-primary">Impact</span>
     </h2>
-    <p className="text-bodyLg text-neutral">
+    <p className="text-bodyLg text-neutral text-justify lg:text-left">
     Colleagues and executives often describe Wasiu as the ‘calm in the storm’ — someone who 
     brings clarity, organization, and a human touch to complex situations. Over the years, 
     his support has helped leadership teams save hundreds of hours, simplify operations, and 
@@ -57,11 +57,11 @@ const Recognition = () => {
 </section>
 
       {/* Rooted in Community */}
-      <section className="py-10 text-center max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-4 xl:px-0 flex flex-col gap-6">
-        <h2 className="text-h2 font-satoshi">
+      <section className="py-10 max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-4 xl:px-0 flex flex-col gap-6">
+        <h2 className="text-h2 text-left lg:text-center font-satoshi">
           Empowering Workplaces Through <span className="text-brand-primary">People-First Leadership</span>
         </h2>
-        <p className="text-bodyLg text-neutral">
+        <p className="text-bodyLg text-neutral text-justify lg:text-center">
         Wasiu believes every workplace can be both productive and human. With over three years of experience supporting 
         executives and guiding teams, he champions clarity, trust, and efficiency as the foundation of organizational success. 
         His work ensures leaders can focus on vision while employees feel valued and engaged.
@@ -70,11 +70,11 @@ const Recognition = () => {
 
       
       {/* CTA Section */}
-      <section className="py-20 text-center flex flex-col gap-6 px-4 sm:px-6 lg:px-4 xl:px-0 bg-surface">
-        <h2 className="text-h2 font-satoshi text-neutral">
+      <section className="py-20 flex flex-col gap-6 px-4 sm:px-6 lg:px-4 xl:px-0 bg-surface">
+        <h2 className="text-h2 text-left lg:text-center font-satoshi text-neutral">
           Life Beyond Work
         </h2>
-        <p className="text-bodyLg text-neutral max-w-[1120px] mx-auto">
+        <p className="text-bodyLg text-neutral text-justify lg:text-center max-w-[1120px] mx-auto">
           When he’s not streamlining operations or solving business challenges, Wasiu enjoys exploring new ideas, 
           mentoring young professionals, and finding balance through family and community. His passion for people 
           extends beyond the office, driving him to create positive impact wherever he goes.

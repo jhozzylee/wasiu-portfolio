@@ -1,5 +1,5 @@
 import React from "react";
-import SEO from "../components/SEO"; // Import your SEO helper
+import SEO from "../components/SEO";
 import Header from "../components/Header";
 import PortfolioSection from "../components/Portfolio";
 import TestimonialSection from "../components/Testemonial";
@@ -9,10 +9,12 @@ import Footer from "../components/Footer";
 export default function Portfolio() {
   return (
     <>
-      {/* Portfolio SEO: Focus on results, case studies, and proven expertise */}
+      {/* SEO for Portfolio page */}
       <SEO 
-        title="Portfolio & Case Studies | Operational Success" 
-        description="View the projects and operational systems Wasiu Ayoola has built for visionary leaders. From HR frameworks to executive support excellence."
+        title="Wasiu Ayoola Portfolio | HR & Operations Case Studies"
+        description="Explore Wasiu Ayoola's portfolio showcasing HR frameworks and executive support systems built to optimize operations for visionary leaders."
+        keywords="Portfolio, Case Studies, Executive Support, HR Systems, Operations"
+        image="https://wasiu-portfolio-five.vercel.app/wasiu-ayoola-executive-assistant.jpg"
       />
       
       <div>
