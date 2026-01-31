@@ -125,7 +125,7 @@ export default function PortfolioSection() {
         </div>
 
         {/* ================= PROJECT GRID ================= */}
-        <div className="text-center">
+        <div className="text-left">
           <h2 className="text-h2 font-satoshi mb-4">
             Projects <span className="text-brand-primary">Gallery</span>
           </h2>

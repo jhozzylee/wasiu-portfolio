@@ -54,7 +54,7 @@ const BookCall = ({ isOpen, onClose }) => {
       <div className="h-[650px]">
         <Cal
           namespace="booking"
-          calLink="zi-creates/booking"
+          calLink="wasiuayoola/booking"
           style={{ width: "100%", height: "100%" }}
           config={{
             layout: "month_view",

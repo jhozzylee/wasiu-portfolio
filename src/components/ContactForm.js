@@ -143,7 +143,7 @@ const Contact = ({ onOpenBookCall }) => {
           <h3 className="text-h2 font-satoshi text-brand-primary">Contact</h3>
           <div>
             <h3 className="text-h3 font-satoshi text-brand-primary">Email</h3>
-            <p className="text-bodyLg text-neutral">olanisebewasiu@gmail.com</p>
+            <p className="text-bodyLg text-neutral">olanisebewasiu53@gmail.com</p>
           </div>
           <div></div>
           <div>
@@ -153,23 +153,23 @@ const Contact = ({ onOpenBookCall }) => {
           <div>
             <h3 className="text-h3 font-satoshi text-brand-primary">Address</h3>
             <p className="text-bodyLg text-neutral">
-            12 street barracks bus stop <br /> Ojuelagba, Lagos
+            Lagos, Nigeria
             </p>
           </div>
           
           <div>
             <h3 className="text-h3 font-satoshi text-brand-primary">Stay Connected</h3>
             <div className="flex gap-8 mt-2">
-              <a href="https://www.facebook.com/kicomputing" aria-label="Facebook" className="hover:text-primary">
+              <a href="https://www.facebook.com" aria-label="Facebook" className="hover:text-primary">
                 <Facebook className="w-6 h-6 " strokeWidth={1}/>
               </a>
-              <a href="https://twitter.com/computing_i" aria-label="Twitter" className="hover:text-primary">
+              <a href="https://twitter.com/ayoolanisebe" aria-label="Twitter" className="hover:text-primary">
                 <Twitter className="w-6 h-6" strokeWidth={1}/>
               </a>
-              <a href="https://www.instagram.com/kicomputing/" aria-label="Instagram" className="hover:text-primary">
+              <a href="https://www.instagram.com/ayo_0la1/" aria-label="Instagram" className="hover:text-primary">
                 <Instagram className="w-6 h-6" strokeWidth={1} />
               </a>
-              <a href="https://www.linkedin.com/company/k.i.-computing/" aria-label="LinkedIn" className="hover:text-primary">
+              <a href="https://www.linkedin.com/in/olanisebewa/" aria-label="LinkedIn" className="hover:text-primary">
                 <Linkedin className="w-6 h-6 " strokeWidth={1}/>
               </a>
             </div>
