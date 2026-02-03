@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const CTAButton = ({ text, fullWidth = false, link, onClick }) => {
-  const baseClasses = `bg-brand-primary font-generalsans text-btn text-neutral-default border border-transparent py-4 px-[36px] transition-all duration-200 
+  const baseClasses = `bg-brand-primary font-generalsans text-btn text-surface-muted border border-transparent py-3 px-[40px] transition-all duration-200 
     hover:bg-brand-primary/20 hover:text-brand-primary hover:border hover:border-brand-primary
     ${fullWidth ? "w-full rounded-none px-11" : "rounded-[40px]"} 
     no-underline inline-block cursor-pointer`;

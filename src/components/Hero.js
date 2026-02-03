@@ -26,10 +26,10 @@ const HeroButtons = ({ onOpenBookCall }) => (
     <Link
       to="/portfolio"
       aria-label="View Portfolio"
-      className="group flex items-center gap-6 font-generalsans text-btn text-neutral-default px-4 py-[10px] rounded-full border border-neutral-default transition-all hover:border-brand-primary hover:text-brand-primary"
+      className="group flex items-center gap-8 font-generalsans text-btn text-neutral-default px-2 py-2 rounded-full border border-neutral-default transition-all hover:border-brand-primary hover:text-brand-primary"
     >
       Portfolio
-      <span className="bg-neutral-default rounded-full p-2 flex items-center justify-center ml-2 group-hover:bg-brand-primary transition-all duration-200">
+      <span className="bg-neutral-default rounded-full p-2 flex items-center justify-center group-hover:bg-brand-primary transition-all duration-200">
         <ArrowRight className="w-4 h-4 text-background" />
       </span>
     </Link>
@@ -42,24 +42,24 @@ const Hero = ({ onOpenBookCall }) => {
       <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-4 xl:px-0 flex flex-col lg:flex-row items-center justify-between">
         
         {/* Left / Text */}
-        <div className="lg:w-7/12 text-center lg:text-left max-w-[640px] ">
+        <div className="lg:w-7/12 text-center lg:text-left">
           {/* Subheading */}
-          <div className="flex items-center gap-2 mb-1 pt-1 sm:pt-1 lg:pt-8 justify-center lg:justify-start">
-            <div className="w-4 sm:w-6 md:w-8 h-1 bg-brand-primary"></div>
-            <h2 className="font-generalsans text-bodySm sm:text-body lg:text-bodyLg">
-              Human Resources & Executive Support Professional
-            </h2>
+          <div className="flex items-center gap-3 mb-6 justify-center lg:justify-start">
+            <div className="w-10 h-[2px] bg-brand-primary"></div>
+            <p className="uppercase tracking-[0.2em] text-xs font-bold text-brand-primary">
+              EA & People Management Expert
+            </p>
           </div>
 
           {/* Heading */}
-          <h1 className="font-satoshi text-h3 sm:text-h2 lg:text-h1 leading-tight mb-2 text-balance">
+          <h1 className="font-satoshi text-[40px] md:text-h1 leading-[1.1] mb-6 text-balance font-bold">
             Helping Businesses Thrive Through{" "}
-            <span className="text-brand-primary">People & Process Excellence</span>
+            <span className="text-brand-primary italic">People & Process</span> Excellence
           </h1>
           
-          {/* Description */}
-          <p className="font-generalsans text-bodyLg font-light mb-8 max-w-[544px] mx-auto lg:mx-0">
-            I help businesses excel by providing strategic EA & HR solutions, optimizing processes, and delivering exceptional executive assistance.
+         {/* Description */}
+         <p className="text-bodyLg text-neutral-muted mb-10 max-w-[540px] mx-auto lg:mx-0 leading-relaxed">
+            I streamline operations and provide strategic executive support, allowing founders to focus on what matters most—growth.
           </p>
 
           {/* Buttons (desktop) */}
@@ -98,7 +98,7 @@ const Hero = ({ onOpenBookCall }) => {
       </div>
 
       {/* Client Logos */}
-      <div className="bg-surface-dim py-6">
+      <div className="bg-surface-muted/30 border-y border-surface-dim pt-24 pb-12 lg:pt-32 lg:pb-16 relative z-0">
         <div className="flex flex-wrap justify-center md:justify-between items-center gap-6 max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-0">
           {clients.map((client, index) => (
             <img

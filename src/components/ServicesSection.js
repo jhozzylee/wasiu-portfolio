@@ -1,46 +1,37 @@
-import React from "react";
+import React, { memo } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Calendar, Briefcase, Layers, UserPlus, TrendingUp, Users } from "lucide-react";
 
-// SVG Icons
-import { ReactComponent as Briefcase } from "../assets/icons/icon-briefcase.svg";
-import { ReactComponent as Calendar } from "../assets/icons/icon-calendar.svg";
-import { ReactComponent as Layers } from "../assets/icons/icon-layers.svg";
-import { ReactComponent as Trending } from "../assets/icons/icon-trending-up.svg";
-import { ReactComponent as Users } from "../assets/icons/icon-users.svg";
-import { ReactComponent as User } from "../assets/icons/icon-user-plus.svg";
-
-export default function ExpertiseSection() {
-  
-  // 🔹 Updated Reusable Card Component to accept "link" prop
-  const ServiceCard = ({ icon: Icon, title, description, link }) => (
-    <div className="border border-surface-dim p-6 rounded-2xl max-w-[352px] w-full flex flex-col">
-      <div className="flex items-center gap-3 mb-4">
-        <Icon className="w-[88px] h-[88px] text-brand-primary transition-colors duration-300" />
-        <h3 className="text-h3 font-satoshi text-neutral-default">
-          {title}
-        </h3>
+const ServiceCard = ({ icon: Icon, title, description, link }) => (
+  <div className="group border border-surface-dim p-8 rounded-[32px] bg-surface-muted/10 flex flex-col transition-all duration-500 hover:border-brand-primary/40 hover:bg-surface-muted/20">
+    {/* Icon & Title Row */}
+    <div className="flex flex-col gap-6 mb-6">
+      <div className="w-16 h-16 rounded-2xl bg-surface-muted flex items-center justify-center group-hover:bg-brand-primary transition-all duration-500">
+        <Icon className="w-8 h-8 text-brand-primary group-hover:text-background" strokeWidth={1.5} />
       </div>
-
-      <p className="text-bodyLg text-neutral mb-6">
-        {description}
-      </p>
-
-      {/* 🔹 Changed to link to the specific service path */}
-      <Link
-        to={link} 
-        aria-label={`View ${title}`}
-        className="group mt-auto items-center justify-between inline-flex items-center gap-4 font-generalsans text-btn text-neutral-default px-4 py-[10px] rounded-full border border-neutral-default transition-all hover:border-brand-primary hover:text-brand-primary"
-      >
-        Learn more
-        <span className="bg-neutral-default rounded-full p-2 flex items-center justify-center group-hover:bg-brand-primary transition-all duration-200">
-          <ArrowRight className="w-4 h-4 text-background" />
-        </span>
-      </Link>
+      <h3 className="text-h3 font-satoshi text-neutral-default group-hover:text-brand-primary transition-colors">
+        {title}
+      </h3>
     </div>
-  );
 
-  // 🔹 Added unique "link" to each Service Data object
+    <p className="text-body text-neutral-muted mb-8 leading-relaxed">
+      {description}
+    </p>
+
+    {/* Button - Aligned to bottom */}
+    <Link
+      to={link} 
+      className="mt-auto group/btn flex items-center justify-between w-full pl-6 pr-2 py-2 rounded-full border border-surface-dim text-btn text-neutral-default transition-all hover:border-brand-primary hover:text-brand-primary"
+    >
+      <span className="font-generalsans">Learn more</span>
+      <div className="bg-surface-dim rounded-full p-2 flex items-center justify-center group-hover/btn:bg-brand-primary transition-all duration-300">
+        <ArrowRight className="w-4 h-4 text-background" />
+      </div>
+    </Link>
+  </div>
+);
+
+const ExpertiseSection = () => {
   const services = [
     {
       icon: Calendar,
@@ -61,13 +52,13 @@ export default function ExpertiseSection() {
       description: "Behind every smooth-running business is strong operational support. I take care of the details from organizing workflows to managing processes.",
     },
     {
-      icon: User,
+      icon: UserPlus,
       title: "Talent Acquisition",
       link: "/services/talent",
       description: "Finding and keeping the right talent is tough — I make it seamless. From crafting job descriptions to onboarding new hires.",
     },
     {
-      icon: Trending,
+      icon: TrendingUp,
       title: "Productivity & Engagement",
       link: "/services/productivity",
       description: "Work isn’t just about getting things done — it’s about keeping people motivated. I design initiatives that improve performance and retention.",
@@ -81,13 +72,26 @@ export default function ExpertiseSection() {
   ];
 
   return (
-    <section className="bg-background text-neutral-default font-generalsans pt-16">
-      <div className="max-w-[1120px] mx-auto px-4 sm:px-6">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <h2 className="text-h2 font-satoshi mb-4">What I Can Do for You</h2>
-          <p className="text-bodyLg text-neutral-muted">From streamlining operations to keeping teams motivated...</p>
+    <section className="bg-background text-neutral-default font-generalsans py-24 lg:py-32">
+      <div className="max-w-[1120px] mx-auto px-6">
+        
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+          <div className="max-w-2xl">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="w-8 h-[2px] bg-brand-primary" />
+              <p className="uppercase tracking-[0.2em] text-xs font-bold text-brand-primary">Services</p>
+            </div>
+            <h2 className="text-h2 md:text-h1 font-satoshi leading-tight">
+              What I Can <span className="text-brand-primary italic">Do for You</span>
+            </h2>
+          </div>
+          <p className="text-bodyLg text-neutral-muted max-w-[320px] md:text-right pb-2">
+            From streamlining operations to keeping teams motivated.
+          </p>
         </div>
 
+        {/* Services Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} />
@@ -96,4 +100,6 @@ export default function ExpertiseSection() {
       </div>
     </section>
   );
-}
+};
+
+export default memo(ExpertiseSection);

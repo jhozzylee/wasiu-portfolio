@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // Back to React Router
 import { client } from "../lib/sanity";
+import { ArrowLeft, ArrowRight, Calendar } from "lucide-react";
 
 const BlogIntro = () => {
   const [latestBlogs, setLatestBlogs] = useState([]);
   const [olderBlogs, setOlderBlogs] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [blogsPerPage] = useState(6); // Number of blogs per page
+  const [blogsPerPage] = useState(6);
 
   useEffect(() => {
     let mounted = true;
     const fetchBlogs = async () => {
       try {
-        // Fetch all posts once, ordered newest first, then split in JS
         const all = await client.fetch(`*[_type == "post"] | order(publishedAt desc){
           _id,
           title,
@@ -25,91 +25,71 @@ const BlogIntro = () => {
         if (!mounted) return;
         setLatestBlogs(all.slice(0, 4));
         setOlderBlogs(all.slice(4));
-        setCurrentPage(1); // reset to first page whenever data loads
+        setCurrentPage(1);
       } catch (error) {
         console.error("Error fetching blogs:", error);
       }
     };
 
     fetchBlogs();
-    return () => {
-      mounted = false;
-    };
+    return () => { mounted = false; };
   }, []);
 
-  // Pagination logic
   const indexOfLastBlog = currentPage * blogsPerPage;
   const indexOfFirstBlog = indexOfLastBlog - blogsPerPage;
   const currentBlogs = olderBlogs.slice(indexOfFirstBlog, indexOfLastBlog);
   const totalPages = Math.max(1, Math.ceil(olderBlogs.length / blogsPerPage));
 
-  const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage((p) => p + 1);
-  };
+  const handleNext = () => currentPage < totalPages && setCurrentPage((p) => p + 1);
+  const handlePrev = () => currentPage > 1 && setCurrentPage((p) => p - 1);
 
-  const handlePrev = () => {
-    if (currentPage > 1) setCurrentPage((p) => p - 1);
-  };
-
-  const formatDate = (d) => (d ? new Date(d).toLocaleDateString() : "");
+  const formatDate = (d) => 
+    d ? new Date(d).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" }) : "";
 
   return (
-    <section className="bg-background text-neutral-default py-20 px-4 sm:px-6 lg:px-0 pt-24 sm:pt-28 lg:pt-36">
-      <div className="max-w-[1120px] mx-auto px-4 sm:px-6 lg:px-4 xl:px-0 flex flex-col gap-12">
-        {/* Intro */}
-        <div className="text-center max-w-3xl mx-auto flex flex-col gap-4">
-          <h1 className="text-h2 sm:text-h1 lg:text-h1 font-satoshi">
-            THE {" "}
-            <span className="text-brand-primary">BLOG </span>
+    <section className="bg-background text-neutral-default py-24 sm:py-32">
+      <div className="max-w-[1120px] mx-auto px-4 sm:px-6">
+        
+        {/* Header Section */}
+        <div className="text-center max-w-3xl mx-auto space-y-6 mb-24">
+          <div className="inline-block px-3 py-1 rounded-full border border-surface-dim bg-surface/50 text-[10px] font-bold uppercase tracking-[0.2em] text-brand-primary">
+            Insights & Perspectives
+          </div>
+          <h1 className="text-h2 sm:text-h1 font-satoshi font-bold">
+            The <span className="text-brand-primary">Blog</span>
           </h1>
-          <p className="text-body max-w-[736px] mx-auto">
-          Welcome to my corner of the internet — a space where work meets real talk. Here, 
-          I share insights on leadership, employee engagement, productivity, and building 
-          workplaces people actually enjoy. You’ll find practical advice, fresh perspectives, 
-          and stories that help leaders and teams thrive without burning out.
+          <p className="text-body text-neutral-default/60 leading-relaxed">
+            Welcome to my corner of the internet — a space where work meets real talk. 
           </p>
         </div>
 
-        {/* Latest Blogs */}
-        <div className="flex flex-col gap-8 py-8">
-        <div>
-            <div className="flex items-center gap-2 justify-center">
-              <div className="w-4 sm:w-6 md:w-8 h-1 bg-brand-primary" />
-              <h3 className="uppercase tracking-wide text-center text-h3">
-                News & Blogs
-              </h3>
-            </div>
-
-            <h2 className="text-h2 font-satoshi text-center">
-              Most Popular{" "}
-              <span className="text-brand-primary">Blog Posts</span>
-            </h2>
-          </div>
-
-          {latestBlogs.length === 0 ? (
-            <p className="text-center text-neutral/70">No posts found.</p>
-          ) : (
+        {/* Featured Section */}
+        <div className="space-y-12 pb-24 border-b border-surface-dim">
+          {latestBlogs.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {latestBlogs.map((blog) => (
                 <Link
                   key={blog._id}
                   to={`/blog/${blog.slug?.current || ""}`}
-                  className="group bg-surface rounded-[16px] overflow-hidden hover:shadow-lg flex flex-col"
+                  className="group flex flex-col space-y-6"
                 >
-                  {blog.mainImage?.asset?.url && (
-                    <img
-                      src={blog.mainImage.asset.url}
-                      alt={blog.title}
-                      loading="lazy"
-                      className="h-[306px] w-full object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  )}
-                  <div className="flex flex-col py-6 gap-4 px-4">
-                    <h3 className="text-h3 font-filson group-hover:text-primary">
+                  <div className="relative aspect-[16/10] overflow-hidden rounded-[24px] border border-surface-dim bg-surface-muted">
+                    {blog.mainImage?.asset?.url && (
+                      <img
+                        src={blog.mainImage.asset.url}
+                        alt={blog.title}
+                        className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-in-out"
+                      />
+                    )}
+                  </div>
+                  <div className="space-y-3 px-2">
+                    <div className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-widest text-neutral-default/40">
+                      <Calendar className="w-3.5 h-3.5" />
+                      {formatDate(blog.publishedAt)}
+                    </div>
+                    <h3 className="text-h3 font-satoshi font-bold group-hover:text-brand-primary transition-colors leading-tight">
                       {blog.title}
                     </h3>
-                    <p className="text-body text-neutral line-clamp-3">{blog.excerpt}</p>
-                    <span className="text-xs text-neutral">{formatDate(blog.publishedAt)}</span>
                   </div>
                 </Link>
               ))}
@@ -117,63 +97,51 @@ const BlogIntro = () => {
           )}
         </div>
 
-        {/* Older Blogs with Pagination */}
-        <div className="flex flex-col gap-8 mt-12">
-          <h2 className="text-h2 text-center font-satoshi">
-            All Blog Post
-          </h2>
+        {/* Archive / Older Blogs */}
+        <div className="pt-24 space-y-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {currentBlogs.map((blog) => (
+              <Link
+                key={blog._id}
+                to={`/blog/${blog.slug?.current || ""}`}
+                className="group flex flex-col space-y-4 p-4 rounded-[24px] border border-transparent hover:border-surface-dim hover:bg-surface/30 transition-all"
+              >
+                <div className="relative aspect-video overflow-hidden rounded-[16px] border border-surface-dim bg-surface-muted">
+                  {blog.mainImage?.asset?.url && (
+                    <img
+                      src={blog.mainImage.asset.url}
+                      alt={blog.title}
+                      className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    />
+                  )}
+                </div>
+                <h3 className="text-lg font-satoshi font-bold leading-snug group-hover:text-brand-primary transition-colors">
+                  {blog.title}
+                </h3>
+              </Link>
+            ))}
+          </div>
 
-          {olderBlogs.length === 0 ? (
-            <p className="text-center text-neutral/70">No older posts available yet.</p>
-          ) : (
-            <>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                {currentBlogs.map((blog) => (
-                  <Link
-                    key={blog._id}
-                    to={`/blog/${blog.slug?.current || ""}`}
-                    className="group bg-surface overflow-hidden rounded-[16px] flex flex-col hover:shadow-lg transition-all duration-200"
-                  >
-                    {blog.mainImage?.asset?.url && (
-                      <img
-                        src={blog.mainImage.asset.url}
-                        alt={blog.title}
-                        loading="lazy"
-                        className="h-48 w-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    )}
-                    <div className="flex flex-col py-6 px-4 gap-4">
-                      <h3 className="text-h4 font-filson">{blog.title}</h3>
-                      <span className="text-sm text-neutral">{formatDate(blog.publishedAt)}</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-
-              {/* Pagination Controls */}
-              <div className="flex justify-center gap-4 mt-6 items-center">
-                <button
-                  onClick={handlePrev}
-                  disabled={currentPage === 1}
-                  className="px-4 py-2 bg-surface-muted rounded disabled:opacity-50 hover:bg-surface-dim transition"
-                >
-                  Previous
-                </button>
-
-                <span className="px-2 py-2">
-                  Page {currentPage} of {totalPages}
-                </span>
-
-                <button
-                  onClick={handleNext}
-                  disabled={currentPage === totalPages}
-                  className="px-4 py-2 bg-surface-muted rounded disabled:opacity-50 hover:bg-surface-dim transition"
-                >
-                  Next
-                </button>
-              </div>
-            </>
-          )}
+          {/* Pagination */}
+          <div className="flex justify-center items-center gap-4 pt-12">
+            <button
+              onClick={handlePrev}
+              disabled={currentPage === 1}
+              className="p-3 rounded-full border border-surface-dim text-neutral-default disabled:opacity-20 hover:bg-brand-primary hover:text-background transition-all"
+            >
+              <ArrowLeft className="w-5 h-5" />
+            </button>
+            <span className="text-sm font-generalsans">
+              Page {currentPage} of {totalPages}
+            </span>
+            <button
+              onClick={handleNext}
+              disabled={currentPage === totalPages}
+              className="p-3 rounded-full border border-surface-dim text-neutral-default disabled:opacity-20 hover:bg-brand-primary hover:text-background transition-all"
+            >
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

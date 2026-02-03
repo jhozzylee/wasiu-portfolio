@@ -23,7 +23,6 @@ export default function Services() {
         <Header />
 
         <main>
-          <h1 className="text-h1">Our Services</h1>
 
           <ServiceSection />
           <ExpertSection />
